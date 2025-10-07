@@ -20,7 +20,7 @@ fixed = "1.29.0"
 fixed-macro = "1.2"
 
 cortex-m = { version = "0.7.7", features = ["inline-asm"] }
-cortex-m-rt = "0.7.5"
+cortex-m-rt = { version = "0.7.5", features = [ "skip-data-copy" ] }
 panic-probe = { version = "1.0", features = ["print-defmt"] }
 futures = { version = "0.3.31", default-features = false, features = ["async-await", "cfg-target-has-atomic", "unstable"] }
 heapless = "0.8"
@@ -51,5 +51,6 @@ bench = false
 
 [patch.crates-io]
 defmt-rtt = { path = "../defmt/firmware/defmt-rtt" }
+cortex-m-rt = { path = "../cortex-m/cortex-m-rt" }
 defmt10 = { package = "defmt", path = "../defmt/defmt" }
 defmt03 = { package = "defmt", path = "../defmt/defmt-03", version = "0.3.0"}
