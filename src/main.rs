@@ -10,10 +10,16 @@ use embassy_rp::clocks::ClockConfig;
 use embassy_rp::config;
 use {defmt_rtt as _, panic_probe as _};
 
+const example:u32 = 16;
+
 #[embassy_executor::main]
 async fn main(_spawner: Spawner) {
     let p = embassy_rp::init(config::Config::new(
         ClockConfig::system_freq(200_000_000).unwrap(),
     ));
-    info!("Hello World!");
+    if example != 16 {
+        crate::panic!();
+    }
+
+    info!("Hello World! {:?}", example);
 }

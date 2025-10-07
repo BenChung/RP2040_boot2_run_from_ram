@@ -145,7 +145,8 @@ SECTIONS
 
   /* LMA of .data */
   /* should actually be __sidata = LOADADDR(.data) - but by setting it to ADDR(.data) it works */
-  __sidata = ADDR(.data);
+  /* __sidata = ADDR(.data); */
+  __sidata = LOADADDR(.data);
 
   /* ### .bss */
   .bss (NOLOAD) : ALIGN(4)
